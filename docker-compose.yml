@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+    loadbalancer:
+        image: haproxy
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./haproxy:/usr/local/etc/haproxy
+
+    appservice1:
+        image: myapp
+        environment:
+            - APPID=8000
+
+    appservice2:
+        image: myapp
+        environment:
+            - APPID=8001
+
+    appservice3:
+        image: myapp
+        environment:
+            - APPID=8002
+
